@@ -40,6 +40,7 @@ var playerSchema = mongoose.Schema({
   fta: String, //Number
   plusMinus: String, //Number
   min: String, //Number
+  localId: Number
 });
 
 // var statBuilder = {assists: stat.assists, blocks: stat.blocks, steals: stat.steals, turnovers: stat.turnovers, offReb: stat.offReb, defReb: stat.defReb, 

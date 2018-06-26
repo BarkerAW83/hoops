@@ -6,16 +6,15 @@ const Player = require('../database/index.js').Player;
 db;
 
 
-// data.players({
+// data.players({ //populates database with vitals, and a numerical index 0-600ish
 //   year: 2017
 // }).then(function(res){
-//   //console.log(res.league.standard) 
 
-//   res.league.standard.forEach((player) => {
+//   res.league.standard.forEach((player, idx) => {
 
 //     var playerBuilder = {firstName: player.firstName, lastName: player.lastName, personId: player.personId, teamId: player.teamId, 
 //       jersey: player.jersey, position: player.pos, heightFeet: player.heightFeet, heightInches: player.heightInches, weightPounds: player.weightPounds,
-//       draftYear: player.draftYear, draftPick: player.draftPick, yearsPro: player.yearsPro, dateOfBirth: player.dateOfBirthUTC}
+//       draftYear: player.draftYear, draftPick: player.draftPick, yearsPro: player.yearsPro, dateOfBirth: player.dateOfBirthUTC, localId: idx}
 
 //     //console.log('NEXT PLAYER IS: ', player)
 //     var newPlayer = new Player(playerBuilder);
