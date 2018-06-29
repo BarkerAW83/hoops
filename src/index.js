@@ -16,9 +16,8 @@ class App extends React.Component{
     getPlayers(){
       axios.get('/players')
       .then((response)=> {
-        //console.log(response);
         this.setState({players: response.data}//, ()=>{console.log('updated players', this.state.players)})
-      )
+      , ()=>{console.log(this.state.players)})
       })
       .catch(function (error) {
         console.log(error);
@@ -27,7 +26,6 @@ class App extends React.Component{
     render(){
       return(
       <div>
-        <h1>TEST DIV FROM SRC/INDEX.JS</h1>
         <Search players={this.state.players}/>
           </div>
           );

@@ -29,6 +29,7 @@ var playerSchema = mongoose.Schema({
   assists: String, //Number,
   blocks: String, //Number
   steals: String, //Number
+  points: String, //Number
   turnovers: String, //Number
   offReb: String, //Number
   defReb: String, //Number

@@ -30,7 +30,7 @@ db;
 //           else{
 //             if (res.league.standard.stats.regularSeason.season[0].total.rpg && res.league.standard.stats.regularSeason.season[0].total.rpg === '-1'){
 //               var stat = res.league.standard.stats.regularSeason.season[1].total
-//               Player.findOneAndUpdate({personId: playerBuilder.personId}, {assists: stat.assists, blocks: stat.blocks, steals: stat.steals, turnovers: stat.turnovers, offReb: stat.offReb, defReb: stat.defReb, fgm: stat.fgm, fga: stat.fga, tpm: stat.tpm, tpa: stat.tpa, ftm: stat.ftm, fta: stat.fta, plusMinus: stat.plusMinus, min: stat.min}, function(err, data){
+//               Player.findOneAndUpdate({personId: playerBuilder.personId}, {assists: stat.assists, points: stat.points, blocks: stat.blocks, steals: stat.steals, turnovers: stat.turnovers, offReb: stat.offReb, defReb: stat.defReb, fgm: stat.fgm, fga: stat.fga, tpm: stat.tpm, tpa: stat.tpa, ftm: stat.ftm, fta: stat.fta, plusMinus: stat.plusMinus, min: stat.min}, function(err, data){
 //                 if (err){
 //                   console.error(err)
 //                 }
@@ -41,7 +41,7 @@ db;
 //             }
 //             else{
 //               var stat = res.league.standard.stats.regularSeason.season[0].total
-//               Player.findOneAndUpdate({personId: playerBuilder.personId}, {assists: stat.assists, blocks: stat.blocks, steals: stat.steals, turnovers: stat.turnovers, offReb: stat.offReb, defReb: stat.defReb, fgm: stat.fgm, fga: stat.fga, tpm: stat.tpm, tpa: stat.tpa, ftm: stat.ftm, fta: stat.fta, plusMinus: stat.plusMinus, min: stat.min}, function(err, data){
+//               Player.findOneAndUpdate({personId: playerBuilder.personId}, {assists: stat.assists, blocks: stat.blocks, points: stat.points, steals: stat.steals, turnovers: stat.turnovers, offReb: stat.offReb, defReb: stat.defReb, fgm: stat.fgm, fga: stat.fga, tpm: stat.tpm, tpa: stat.tpa, ftm: stat.ftm, fta: stat.fta, plusMinus: stat.plusMinus, min: stat.min}, function(err, data){
 //                 if (err){
 //                   console.error(err)
 //                 }
@@ -60,7 +60,7 @@ db;
 // })
 
 
-//Player.deleteMany({fga: null}, function (err) {}); //deleted players that never took a shot/played
+Player.deleteMany({fga: null}, function (err) {}); //deleted players that never took a shot/played
 
 // data.playerProfile({ //returns one players stats
 //   year: 2018,
@@ -75,19 +75,21 @@ db;
 ///////////////
 
 
-var localIds = []
+// var localIds = []
 
-Player.find({}, function(err, data){
-  if (err){
-    console.error(err)
-  }
-  else{
-    data.forEach((player)=>{
-      //console.log(player.localId);
-      localIds.push(player.localId);
-      console.log('updated localIds = ', localIds);
-    })
-  }
-})
+// Player.find({}, function(err, data){
+//   if (err){
+//     console.error(err)
+//   }
+//   else{
+//     data.forEach((player)=>{
+//       //console.log(player.localId);
+//       localIds.push(player.localId);
+//       //console.log('updated localIds = ', localIds);
+//     })
+//   }
+// })
+
+//console.log(localIds);
 
 

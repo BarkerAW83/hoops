@@ -5,7 +5,7 @@ class Search extends React.Component{
     super(props);
     this.state = {
       searchValue: '',
-      selectedPlayer: 'TESTPLAYER'
+      selectedPlayer: ''
     }
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
@@ -15,16 +15,27 @@ class Search extends React.Component{
       this.setState({searchValue: event.target.value})
     }
     handleSearchSubmit(event){
-      //alert('A name was submitted: ' + this.state.searchValue)
       this.playerSearch()
       event.preventDefault();
     }
     playerSearch(){
-      //console.log(this.props)
-      this.props.players.forEach((player)=>{
-        if (player.lastName === this.state.searchValue){
-          //console.log('THE PLAYER IS ', player.firstName)
-          this.setState({selectedPlayer: player.firstName})
+      var playerArr = [];
+      if (this.state.searchValue.split(' ').length > 2){ 
+        alert('Player not found! Maybe try a few characters of the player\'s last name');
+        return null;
+      }
+      else if (this.state.searchValue.split(' ').length === 1){
+        var first = ''
+        var last = this.state.searchValue.split(' ')
+      }
+      else{
+        var first = this.state.searchValue.split(' ')[0]
+        var last = this.state.searchValue.split(' ')[1]
+      }
+      this.props.players.forEach((player, idx)=>{
+          if (player.lastName.includes(last) && player.firstName.includes(first)){
+          playerArr.push(idx);
+          this.setState({selectedPlayer: this.props.players[idx]}, ()=>{console.log(this.state.selectedPlayer, playerArr)})
         }
       })
     }
@@ -38,10 +49,14 @@ class Search extends React.Component{
         </label>
         <input type="submit" value="Submit" />
         </form>
-        <h1>{this.state.selectedPlayer}</h1>
+        <h1>Points: {this.state.selectedPlayer.points}</h1>
         </div>
         );
   }
 }
 
 export default Search;
+
+//display player stats
+//build full fantasy roster
+//display roster stats
