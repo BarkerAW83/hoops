@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Search from './Search'
+import Search from './search'
+import Question from './question'
 import axios from 'axios';
 
 class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      players: []
+      players: [],
+      rosterLength: 475
     }
     }
     componentDidMount(){
@@ -16,8 +18,8 @@ class App extends React.Component{
     getPlayers(){
       axios.get('/players')
       .then((response)=> {
-        this.setState({players: response.data}//, ()=>{console.log('updated players', this.state.players)})
-      , ()=>{console.log('GET PLAYERS FROM src/index', this.state.players)})
+        this.setState({players: response.data, rosterLength: response.data.length}//, ()=>{console.log('updated players', this.state.players, 'rosterLength: ', this.state.rosterLength)})
+        )
       })
       .catch(function (error) {
         console.log(error);
@@ -27,6 +29,7 @@ class App extends React.Component{
       return(
       <div>
         <Search players={this.state.players}/>
+        <Question players={this.state.players} rosterLength={this.state.rosterLength}/>
       </div>
           );
   }
