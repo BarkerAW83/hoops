@@ -60,7 +60,7 @@ db;
 // })
 
 
-Player.deleteMany({fga: null}, function (err) {}); //deleted players that never took a shot/played
+//Player.deleteMany({fga: null}, function (err) {}); //deleted players that never took a shot/played
 
 // data.playerProfile({ //returns one players stats
 //   year: 2018,

@@ -29,13 +29,13 @@ class Search extends React.Component{
         var last = this.state.searchValue.split(' ')
       }
       else{
-        var first = this.state.searchValue.split(' ')[0]
-        var last = this.state.searchValue.split(' ')[1]
+        var first = this.state.searchValue.split(' ')[0].toLowerCase();
+        var last = this.state.searchValue.split(' ')[1].toLowerCase();
       }
       this.props.players.forEach((player, idx)=>{
-          if (player.lastName.includes(last) && player.firstName.includes(first)){
+          if (player.lastName.toLowerCase().includes(last) && player.firstName.toLowerCase().includes(first)){
           playerArr.push(idx);
-          this.setState({selectedPlayer: this.props.players[idx]}, ()=>{console.log(this.state.selectedPlayer, playerArr)})
+          this.setState({selectedPlayer: this.props.players[idx]}, ()=>{'SELECTED PLAYERS FROM src/search', console.log(this.state.selectedPlayer, playerArr)})
         }
       })
     }

@@ -10,8 +10,7 @@ var pullPlayers = function(req, res){
       res.status(500).send(err);
     }
     else{
-      console.log(data);
-      //return data;
+      //console.log(data);
       res.status(202).send(data);
     }
   })
