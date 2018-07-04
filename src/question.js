@@ -7,18 +7,21 @@ class Question extends React.Component{
       currentPlayerA : '',
       currentPlayerB : ''
     }
-    this.getRandomPlayers = this.getRandomPlayers.bind(this);
+    //this.getRandomPlayers = this.getRandomPlayers.bind(this);
+
     // this.handleSearchChange = this.handleSearchChange.bind(this);
     // this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     // this.playerSearch = this.playerSearch.bind(this);
     }
     componentDidMount(){
       this.getRandomPlayers();
-      console.log('question props are: ', this.props)
+      //console.log('question props are: ', this.props)
     }
-    getRandomPlayers(){
-      this.setState({currentPlayerA: (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0)), currentPlayerB: (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))}, ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB)})
-    }
+
+    // getRandomPlayers(){
+    //   this.setState({currentPlayerA: (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0)), currentPlayerB: (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))}, ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB, 'rosterLength is: ', this.props.rosterLength)})
+    // }
+
     // handleSearchChange(event){
     //   this.setState({searchValue: event.target.value})
     // }
@@ -30,14 +33,7 @@ class Question extends React.Component{
     render(){
       return(
         <div>
-          {/* <form onSubmit={this.handleSearchSubmit}>
-        <label>
-          Search Player:
-          <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
-        </label>
-        <input type="submit" value="Submit" />
-        </form>
-        <h1>Points: {this.state.selectedPlayer.points}</h1> */}
+
         </div>
         );
   }
