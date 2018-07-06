@@ -4,32 +4,19 @@ class Question extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      currentPlayerA : '',
-      currentPlayerB : ''
+      currentPlayerA: null,
+      currentPlayerB: null
     }
-    //this.getRandomPlayers = this.getRandomPlayers.bind(this);
-
-    // this.handleSearchChange = this.handleSearchChange.bind(this);
-    // this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
-    // this.playerSearch = this.playerSearch.bind(this);
+    this.getRandomPlayers = this.getRandomPlayers.bind(this);
     }
-    componentDidMount(){
-      this.getRandomPlayers();
-      //console.log('question props are: ', this.props)
+    componentDidUpdate(){
+      if (this.props.rosterLength !== null && this.state.currentPlayerA === null){
+        this.getRandomPlayers()
+      }
     }
-
-    // getRandomPlayers(){
-    //   this.setState({currentPlayerA: (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0)), currentPlayerB: (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))}, ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB, 'rosterLength is: ', this.props.rosterLength)})
-    // }
-
-    // handleSearchChange(event){
-    //   this.setState({searchValue: event.target.value})
-    // }
-    // handleSearchSubmit(event){
-    //   this.playerSearch()
-    //   event.preventDefault();
-    // }
-
+    getRandomPlayers(){
+      this.setState({currentPlayerA: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))], currentPlayerB: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))]}, ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB)})
+    }
     render(){
       return(
         <div>

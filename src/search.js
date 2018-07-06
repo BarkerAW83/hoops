@@ -19,7 +19,6 @@ class Search extends React.Component{
       event.preventDefault();
     }
     playerSearch(){
-      // var playerArr = [];
       var first; 
       var last; 
       if (this.state.searchValue.split(' ').length > 2){ 
@@ -35,9 +34,9 @@ class Search extends React.Component{
         last = this.state.searchValue.split(' ')[1].toLowerCase();
       }
       this.props.players.forEach((player, idx)=>{
-          if (player.lastName.toLowerCase().includes(last) && player.firstName.toLowerCase().includes(first)){
-            this.setState({selectedPlayer: this.props.players[idx]}, ()=>{'SELECTED PLAYERS FROM src/search', console.log(this.state.selectedPlayer)})
-          }
+        if (player.lastName.toLowerCase().includes(last) && player.firstName.toLowerCase().includes(first)){
+          this.setState({selectedPlayer: this.props.players[idx]}, ()=>{'SELECTED PLAYERS FROM src/search', console.log(this.state.selectedPlayer)})
+        }
       })
     }
     render(){
