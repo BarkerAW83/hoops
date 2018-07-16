@@ -6,8 +6,7 @@ class Question extends React.Component{
     this.state = {
       currentPlayerA: null,
       currentPlayerB: null,
-      nameA: null,
-      nameB: null
+      propsLoaded: false
     }
     this.getRandomPlayers = this.getRandomPlayers.bind(this);
     }
@@ -19,15 +18,26 @@ class Question extends React.Component{
     getRandomPlayers(){
       this.setState({currentPlayerA: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))], 
                      currentPlayerB: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))]}, 
-                    ()=>{this.setState({nameA: this.state.currentPlayerA.firstName, nameB: this.state.currentPlayerB.firstName}, 
-                    ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB)})})
+                    ()=>{this.setState({nameA: this.state.currentPlayerA.lastName, nameB: this.state.currentPlayerB.lastName, propsLoaded: true}, 
+                    ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB)}
+                    )})
     }
-
     render(){
+      var playerA;
+      var playerB;
+
+      if (this.state.propsLoaded){
+        playerA = this.state.currentPlayerA.lastName,
+        playerB = this.state.currentPlayerB.lastName
+      }
+      else{
+        playerA = null,
+        playerB = null
+      }
       return(
         <div>
-        <button>{this.state.nameA}</button>
-        <button>{this.state.nameB}</button>
+        <div><button>{playerA}</button></div>
+        <div><button>{playerB}</button></div>
         </div>
         );
   }

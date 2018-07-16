@@ -9,29 +9,23 @@ class App extends React.Component{
     super(props);
     this.state = {
       players: [],
-      rosterLength: null//,
-      // currentPlayerA: null,
-      // currentPlayerB: null
+      rosterLength: null
       }
       this.getPlayers = this.getPlayers.bind(this);
-      //this.getRandomPlayers = this.getRandomPlayers.bind(this);
     }
     componentDidMount(){
       this.getPlayers();
     }
     getPlayers(){
       axios.get('/players')
-      .then((response)=> {
-        this.setState({players: response.data, rosterLength: response.data.length}//, ()=>{this.getRandomPlayers()}
-        )
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then((response)=> {
+          this.setState({players: response.data, rosterLength: response.data.length}//, ()=>{this.getRandomPlayers()}
+          )
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    // getRandomPlayers(){
-    //   this.setState({currentPlayerA: this.state.players[(Math.floor(Math.random() * (this.state.rosterLength - 0 + 1) + 0))], currentPlayerB: this.state.players[(Math.floor(Math.random() * (this.state.rosterLength - 0 + 1) + 0))]}, ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB)})
-    // }
     render(){
       return(
       <div>
@@ -43,3 +37,8 @@ class App extends React.Component{
 }
 
 ReactDOM.render(<App/>, document.getElementById("app"));
+
+//npm start = starts server/index.js with nodemon
+//npm run dev = starts webpack watching the files in development mode (per package.json)
+//mongod = runs mongodb
+//mongo --host 127.0.0.1:27017 = connects mongo to the localhost
