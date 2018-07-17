@@ -3,7 +3,7 @@ const stats = require('nba.js').stats;
 const db = require('../database/index.js').db;
 const Player = require('../database/index.js').Player;
 
-db;
+//db;
 
 // data.players({ //populates database with vitals, and a numerical index 0-600ish
 //   year: 2017

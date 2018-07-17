@@ -17,10 +17,9 @@ class Question extends React.Component{
     }
     getRandomPlayers(){
       this.setState({currentPlayerA: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))], 
-                     currentPlayerB: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))]}, 
-                    ()=>{this.setState({nameA: this.state.currentPlayerA.lastName, nameB: this.state.currentPlayerB.lastName, propsLoaded: true}, 
-                    ()=>{console.log(this.state.currentPlayerA, this.state.currentPlayerB)}
-                    )})
+                    currentPlayerB: this.props.players[(Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0))],
+                    propsLoaded: true}, 
+                    ()=>console.log(this.state.currentPlayerA, this.state.currentPlayerB))
     }
     render(){
       var playerA;

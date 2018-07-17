@@ -75,7 +75,6 @@ class Search extends React.Component{
         </label>
         <input type="submit" value="Submit" />
         </form>
-        {/* <h1>Points: {this.state.selectedPlayer.points}</h1> */}
         <h1>Points: {points}</h1>
         </div>
         );
