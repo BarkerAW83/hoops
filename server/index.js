@@ -8,9 +8,9 @@ app.use(express.static(path.join(__dirname, '/../dist')))
 
 app.use(bodyParser.json())
 
-//app.get('/', (req, res) => res.send('Hello World from Server/index.js'));
+//app.get('/', (req, res) => res.send('Default connectionfrom server/index.js'));
 
-app.listen(3000, ()=> console.log('test app listening from Server/index.js'))
+app.listen(3000, ()=> console.log('Hoops server listening from server/index.js'))
 
 app.get('/players', function(req, res){
   pullPlayers(req, res);
