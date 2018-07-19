@@ -1,4 +1,6 @@
 import React from 'react';
+import Score from './score'
+
 
 class Question extends React.Component{
   constructor(props){
@@ -8,7 +10,8 @@ class Question extends React.Component{
       currentPlayerB: null,
       randomPlayer: null,
       randomPlayerVar: null,
-      propsLoaded: false
+      propsLoaded: false,
+      score: 0
     }
     this.getRandomPlayers = this.getRandomPlayers.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
@@ -22,22 +25,29 @@ class Question extends React.Component{
       }
     }
     getRandomPlayers(){
-      var number = (Math.floor(Math.random() * (1 - 0 + 1) + 0));
       var randomA = (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0));
       var randomB = (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0));
+      if (randomA === randomB){
+        randomB = (Math.floor(Math.random() * (this.props.rosterLength - 0 + 1) + 0));
+      }
       this.setState({currentPlayerA: this.props.players[randomA], 
                     currentPlayerB: this.props.players[randomB],
                     propsLoaded: true,
-                    randomPlayer: ((this.state.randomPlayerVar > 0) ? this.props.players[randomA] : this.props.players[randomB])})//, 
-                    //()=>console.log(this.state.currentPlayerA, this.state.currentPlayerB, 'RANDOM PLAYER IS, ', this.state.randomPlayer))
-    }
+                    randomPlayer: ((this.state.randomPlayerVar > 0) ? this.props.players[randomA] : this.props.players[randomB])}//, 
+                    //()=>console.log(this.state.currentPlayerA, this.state.currentPlayerB, 'RANDOM PLAYER IS, ', this.state.randomPlayer)
+    )}
+
     handleButtonClick(clickedKey, event){
-      //console.log(clickedKey, ': IS THE CLICKED KEY ,', this.state.randomPlayer._id, ': IS THE RANDOM KEY' )
-      var result = 'incorrect';
-      if (clickedKey === this.state.randomPlayer._id){
-        result = 'correct'
+      var result = 'correct';
+      var addendum = ' ';
+      if (clickedKey !== this.state.randomPlayer._id){
+        result = 'incorrect';
+        //addendum = ' '
       }
-      console.log('YOU HAVE MADE THE ' + result + ' GUESS')
+      alert('YOU HAVE MADE THE ' + result + ' GUESS' + addendum)
+      this.setState({randomPlayerVar: (Math.floor(Math.random() * (1 - 0 + 1) + 0)), 
+      score: ((clickedKey === this.state.randomPlayer._id) ? (this.state.score + 5) : (this.state.score - 5))},
+      ()=>this.getRandomPlayers())
     }
     render(){
       var playerA;
@@ -59,6 +69,7 @@ class Question extends React.Component{
         <div><button onClick={()=>this.handleButtonClick(idA)}>{playerA}</button></div>
         <div><button onClick={()=>this.handleButtonClick(idB)}>{playerB}</button></div>
         <h2></h2>
+        <Score score={this.state.score}/>
         </div>
         );
   }
